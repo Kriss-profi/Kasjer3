@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kasjer3.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,12 @@ namespace Kasjer3
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new Wallet();
         }
 
         private void TextBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            TextBox tb = sender as TextBox;
+            TextBox? tb = sender as TextBox;
             tb.Dispatcher.BeginInvoke(new Action(() => tb.SelectAll()));
         }
 
