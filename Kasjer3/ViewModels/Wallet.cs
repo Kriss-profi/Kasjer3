@@ -1,4 +1,5 @@
-﻿using Kasjer3.Models;
+﻿using Kasjer3.Help;
+using Kasjer3.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,11 +7,16 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Kasjer3.ViewModels
 {
     public class Wallet : INotifyPropertyChanged
     {
+        public Wallet()
+        {
+            ZerujCommand = new RelayCommand(a => Zeruj());
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -75,6 +81,58 @@ namespace Kasjer3.ViewModels
             OnPropertyChanged();
         }
 
+        public ICommand ZerujCommand { get; private set; }
+
+        private void Zeruj()
+        {
+            Casket50000Quantity = 0;
+            Casket20000Quantity = 0;
+            Casket10000Quantity = 0;
+            Casket5000Quantity = 0;
+            Casket2000Quantity = 0;
+            Casket1000Quantity = 0;
+            Casket500Quantity = 0;
+            Casket200Quantity = 0;
+            Casket100Quantity = 0;
+            Casket50Quantity = 0;
+            Casket20Quantity = 0;
+            Casket10Quantity = 0;
+            Casket5Quantity = 0;
+            Casket2Quantity = 0;
+            Casket1Quantity = 0;
+            DaySafe50000Quantity = 0;
+            DaySafe20000Quantity = 0;
+            DaySafe10000Quantity = 0;
+            DaySafe5000Quantity = 0;
+            DaySafe2000Quantity = 0;
+            DaySafe1000Quantity = 0;
+            DaySafe500Quantity = 0;
+            DaySafe200Quantity = 0;
+            DaySafe100Quantity = 0;
+            DaySafe50Quantity = 0;
+            DaySafe20Quantity = 0;
+            DaySafe10Quantity = 0;
+            DaySafe5Quantity = 0;
+            DaySafe2Quantity = 0;
+            DaySafe1Quantity = 0;
+            MainSafe50000Quantity = 0;
+            MainSafe20000Quantity = 0;
+            MainSafe10000Quantity = 0;
+            MainSafe5000Quantity = 0;
+            MainSafe2000Quantity = 0;
+            MainSafe1000Quantity = 0;
+            MainSafe500Quantity = 0;
+            MainSafe200Quantity = 0;
+            MainSafe100Quantity = 0;
+            MainSafe50Quantity = 0;
+            MainSafe20Quantity = 0;
+            MainSafe10Quantity = 0;
+            MainSafe5Quantity = 0;
+            MainSafe2Quantity = 0;
+            MainSafe1Quantity = 0;
+            SystemValue = 0;
+        }
+
         #region KASETKA
 
         public decimal CasketAmount
@@ -103,7 +161,7 @@ namespace Kasjer3.ViewModels
 
         public int Casket50000Quantity
         {
-            get { return casket.Nom50000.Quantity;  }
+            get { return casket.Nom50000.Quantity; }
             set 
             { 
                 casket.Nom50000.Quantity = value;

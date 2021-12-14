@@ -34,7 +34,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="30" />
             </Grid.ColumnDefinitions>
-            <Button Name="zeruj" Content="Zeruj" Background="#FFE8F8E8"/>
+            <Button Name="zeruj" Content="Zeruj" Background="#FFE8F8E8" Command="{Binding ZerujCommand}"/>
             <Button Grid.Column="1" Content="Drukuj" TabIndex="46" Background="#FFE8F8E8"/>
             <Button Grid.Column="2" Content="?" Background="#FFE8F8E8"/>
             <TextBlock Grid.Column="0" Grid.Row="1" x:Name="Suma0" TextAlignment="Center" 

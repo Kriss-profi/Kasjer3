@@ -26,9 +26,8 @@ namespace Kasjer3.Models
 
         public decimal WalletSum()
         {
-            decimal walletSum = 0;
-
-            walletSum = (Nom50000.Quantity * Nom50000.FValue)
+            decimal walletSum 
+                = (Nom50000.Quantity * Nom50000.FValue)
                 + (Nom20000.Quantity * Nom20000.FValue)
                 + (Nom10000.Quantity * Nom10000.FValue)
                 + (Nom5000.Quantity * Nom5000.FValue)
