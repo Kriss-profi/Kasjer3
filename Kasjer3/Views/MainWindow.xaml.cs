@@ -1,4 +1,5 @@
 ﻿using Kasjer3.ViewModels;
+using Kasjer3.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace Kasjer3
             DataContext = new Wallet();
         }
 
+        private Wallet? MyDataContext => DataContext as Wallet;
         private void TextBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             TextBox? tb = sender as TextBox;
@@ -37,13 +39,23 @@ namespace Kasjer3
         {
             if(e.Key == Key.Enter)
             {
-                TextBox textBox = e.Source as TextBox;
+                TextBox? textBox = e.Source as TextBox;
                 if(textBox != null)
                 {
                     textBox.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
                 }
                 e.Handled = true;
             }
+        }
+
+        private void Print_Click(object sender, RoutedEventArgs e)
+        {
+            new PrintPage(MyDataContext).ShowDialog();
+        }
+
+        private void Info_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

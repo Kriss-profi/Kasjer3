@@ -16,11 +16,13 @@ namespace Kasjer3.ViewModels
         public Wallet()
         {
             ZerujCommand = new RelayCommand(a => Zeruj());
+            WalletStorage walletStorage = new WalletStorage();
+            walletStorage.LoadWallet(this);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -33,8 +35,10 @@ namespace Kasjer3.ViewModels
         private decimal _daySafeAmount;
         private decimal _mainSafeAmount;
         private decimal _systemValue;
+        private string _systemValueString;
         private decimal _walletValue;
         private decimal _differenceValue;
+        private readonly WalletStorage walletStorage = new WalletStorage();
 
         public decimal DifferenceValue
         {
@@ -47,7 +51,13 @@ namespace Kasjer3.ViewModels
         }
         public void SetDifferenceValue()
         {
-            DifferenceValue = WalletValue - SystemValue;
+            if(SystemValue != 0)
+            {
+                DifferenceValue = WalletValue - SystemValue;
+            }else
+            {
+                DifferenceValue = 0;
+            }
         }
 
         public decimal WalletValue
@@ -59,14 +69,35 @@ namespace Kasjer3.ViewModels
                 OnPropertyChanged();
             }
         }
-
+        public string SystemValueString
+        {
+            get { return _systemValueString; }
+            set 
+            { 
+                String temp = value.Replace(",",".");
+                //String temp = value;
+                //_systemValueString = Format(temp, "{0,12:#,##0.0}");
+                _systemValueString = String.Format(temp, "{0,12:#,##0.0}");
+                //_systemValueString = String.Format("{0,12:0,000.00}", value.Replace(",","."));
+                //SystemValue = Convert.ToDecimal(value.Replace(",",".")) ;
+                if (decimal.TryParse(value, out decimal number))
+                {
+                    SystemValue = number;
+                }else
+                {
+                    SystemValue = 0;
+                    _systemValueString = "Akceptuję tylko cyfry ";
+                }
+                OnPropertyChanged(); 
+            }
+        }
         public decimal SystemValue
         {
             get { return _systemValue; }
             set
             {
                 _systemValue = value;
-                SetDifferenceValue();
+                SetWalletValue();
                 OnPropertyChanged();
             }
         }
@@ -78,7 +109,13 @@ namespace Kasjer3.ViewModels
             SetMainSafeAmount();
             WalletValue = CasketAmount + DaySafeAmount + MainSafeAmount;
             SetDifferenceValue();
+            SaveMyWallet();
             OnPropertyChanged();
+        }
+
+        private void SaveMyWallet()
+        {
+            walletStorage.SaveWallet(this);
         }
 
         public ICommand ZerujCommand { get; private set; }

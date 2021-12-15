@@ -12,7 +12,7 @@ namespace Kasjer3.Help
         readonly Action<object> _execute;
         readonly Predicate<object> _canExecute;
 
-        public RelayCommand(Action<object> execute) : this(execute, null)
+        public RelayCommand(Action<object> execute) : this(execute, canExecute: null)
         {
 
         }

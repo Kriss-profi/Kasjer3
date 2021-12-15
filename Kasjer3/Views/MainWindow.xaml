@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:modelwidoku="clr-namespace:Kasjer3.ViewModels"
-        xmlns:local="clr-namespace:Kasjer3"
+        xmlns:local="clr-namespace:Kasjer3.Help"
         d:DataContext="{d:DesignInstance Type=modelwidoku:Wallet}"
         mc:Ignorable="d"
         ResizeMode="NoResize"
@@ -12,6 +12,7 @@
         Height="600" 
         Width="390">
     <Window.Resources>
+        <local:DiferencColorConverter x:Key="dcc" />
         <Style TargetType="TextBox" >
             <Setter Property="TextAlignment" Value="Right"/>
             <Setter Property="FontSize" Value="18" />
@@ -35,26 +36,27 @@
                 <ColumnDefinition Width="30" />
             </Grid.ColumnDefinitions>
             <Button Name="zeruj" Content="Zeruj" Background="#FFE8F8E8" Command="{Binding ZerujCommand}"/>
-            <Button Grid.Column="1" Content="Drukuj" TabIndex="46" Background="#FFE8F8E8"/>
-            <Button Grid.Column="2" Content="?" Background="#FFE8F8E8"/>
+            <Button x:Name="Print" Grid.Column="1" Content="Drukuj" TabIndex="46" Background="#FFE8F8E8" Click="Print_Click"/>
+            <Button x:Name="Info" Grid.Column="2" Content="?" Background="#FFE8F8E8" Click="Info_Click"/>
             <TextBlock Grid.Column="0" Grid.Row="1" x:Name="Suma0" TextAlignment="Center" 
                        VerticalAlignment="Center"
                        FontSize="16"
-                       Text="{Binding Path=DifferenceValue, Mode=OneWay, StringFormat={}{0:N2} zł.}" />
+                       Text="{Binding Path=DifferenceValue, Mode=OneWay, StringFormat={}{0:N2} zł.}" 
+                       Foreground="{Binding Path=DifferenceValue,  Converter={StaticResource dcc}}"/>
             <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Width="Auto" Margin="5 0 5 0"
                      x:Name="ValueSystem"
                      InputScope="Digits"
                      TabIndex="1"
                      BorderBrush="Green"
-                     Text="{Binding SystemValue, Mode=TwoWay, StringFormat={}{0:N2} zł.}"
+                     Text="{Binding SystemValueString, Mode=TwoWay, StringFormat={}{0:N2} zł.}"
                      PreviewKeyDown="Grid_PreviewKeyDown"
-                     ToolTip="Wprowadź Kwotę z Systemu" />
+                     ToolTip="Wprowadź Kwotę do sprawdzenia" />
         </Grid>
         <TextBlock x:Name="Suma" FontSize="24" 
                    Text="{Binding Path=WalletValue, Mode=OneWay, StringFormat={}{0:N2} zł.}" 
-                   TextAlignment="Center" 
+                   TextAlignment="Right" 
                    FontWeight="DemiBold"
-                   Margin="0 5 0 10"/>
+                   Margin="0 0 50 0"/>
         <Grid ShowGridLines="False" x:Name="KasjerView" PreviewKeyDown="Grid_PreviewKeyDown">
 
             <Grid.ColumnDefinitions>
