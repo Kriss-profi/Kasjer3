@@ -1,19 +1,9 @@
 ﻿using Kasjer3.ViewModels;
 using Kasjer3.Views;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Kasjer3
 {
@@ -55,7 +45,20 @@ namespace Kasjer3
 
         private void Info_Click(object sender, RoutedEventArgs e)
         {
-
+            // Configure message box
+            string message = "Witam\n Jeśli podoba Ci się Kasjer i chcesz dowiedzieć się więcej. \n Zobacz na stronę:\n www.polprofi.de/kasjer ";
+            string caption = "Info o twórcy";
+            MessageBoxButton buttons = MessageBoxButton.OKCancel;
+            //MessageBoxImage icon = MessageBoxImage.Information;
+            MessageBoxImage icon = MessageBoxImage.Information;
+            MessageBoxResult defaultResult = MessageBoxResult.Yes;
+            MessageBoxOptions options = MessageBoxOptions.DefaultDesktopOnly;
+            // Show message box
+            defaultResult = MessageBox.Show(message, caption, buttons, icon, defaultResult, options);
+            if (defaultResult == MessageBoxResult.OK)
+            {
+                //Process.Start(new ProcessStartInfo( "http://polprofi.de" ) );
+            }
         }
     }
 }

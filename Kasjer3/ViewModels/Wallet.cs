@@ -1,12 +1,8 @@
 ﻿using Kasjer3.Help;
 using Kasjer3.Models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Kasjer3.ViewModels
@@ -16,7 +12,6 @@ namespace Kasjer3.ViewModels
         public Wallet()
         {
             ZerujCommand = new RelayCommand(a => Zeruj());
-            WalletStorage walletStorage = new WalletStorage();
             walletStorage.LoadWallet(this);
         }
 
@@ -75,12 +70,10 @@ namespace Kasjer3.ViewModels
             set 
             { 
                 String temp = value.Replace(",",".");
-                //String temp = value;
-                //_systemValueString = Format(temp, "{0,12:#,##0.0}");
-                _systemValueString = String.Format(temp, "{0,12:#,##0.0}");
-                //_systemValueString = String.Format("{0,12:0,000.00}", value.Replace(",","."));
-                //SystemValue = Convert.ToDecimal(value.Replace(",",".")) ;
-                if (decimal.TryParse(value, out decimal number))
+                decimal tempdecimal = decimal.Parse(temp);
+                _systemValueString = $"{tempdecimal:N2}";
+                OnPropertyChanged(); 
+                if (decimal.TryParse(_systemValueString, out decimal number))
                 {
                     SystemValue = number;
                 }else
@@ -88,7 +81,6 @@ namespace Kasjer3.ViewModels
                     SystemValue = 0;
                     _systemValueString = "Akceptuję tylko cyfry ";
                 }
-                OnPropertyChanged(); 
             }
         }
         public decimal SystemValue
@@ -167,7 +159,7 @@ namespace Kasjer3.ViewModels
             MainSafe5Quantity = 0;
             MainSafe2Quantity = 0;
             MainSafe1Quantity = 0;
-            SystemValue = 0;
+            SystemValueString = "0";
         }
 
         #region KASETKA

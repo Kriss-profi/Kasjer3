@@ -1,17 +1,13 @@
 ﻿using Kasjer3.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Kasjer3.Models
 {
     public class WalletStorage
     {
-        private const string fileName = "Kasjer3.txt";
+        private string fileName = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Kasjer3.txt"; 
 
         public void SaveWallet(Wallet wallet)
         {
