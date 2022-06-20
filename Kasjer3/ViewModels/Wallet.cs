@@ -44,6 +44,7 @@ namespace Kasjer3.ViewModels
                 OnPropertyChanged();
             }
         }
+
         public void SetDifferenceValue()
         {
             if(SystemValue != 0)
@@ -64,6 +65,7 @@ namespace Kasjer3.ViewModels
                 OnPropertyChanged();
             }
         }
+
         public string SystemValueString
         {
             get { return _systemValueString; }
@@ -83,6 +85,7 @@ namespace Kasjer3.ViewModels
                 }
             }
         }
+
         public decimal SystemValue
         {
             get { return _systemValue; }
@@ -1277,7 +1280,6 @@ namespace Kasjer3.ViewModels
         #endregion
 
         #endregion
-
 
         private static decimal Calculate(FaceValue nom)
         {

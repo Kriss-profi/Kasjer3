@@ -46,7 +46,7 @@ namespace Kasjer3
         private void Info_Click(object sender, RoutedEventArgs e)
         {
             // Configure message box
-            string message = "Witam\n Jeśli podoba Ci się Kasjer i chcesz dowiedzieć się więcej. \n Zobacz na stronę:\n www.polprofi.de/kasjer ";
+            string message = "Witam\n Jeśli podoba Ci się Kasjer i chcesz dowiedzieć się więcej. \n Zobacz na stronę:\n www.kasjer.polprofi.eu ";
             string caption = "Info o twórcy";
             MessageBoxButton buttons = MessageBoxButton.OKCancel;
             //MessageBoxImage icon = MessageBoxImage.Information;
@@ -57,7 +57,7 @@ namespace Kasjer3
             defaultResult = MessageBox.Show(message, caption, buttons, icon, defaultResult, options);
             if (defaultResult == MessageBoxResult.OK)
             {
-                //Process.Start(new ProcessStartInfo( "http://polprofi.de" ) );
+                //Process.Start(new ProcessStartInfo( "http://kasjer.polprofi.eu" ) );
             }
         }
     }

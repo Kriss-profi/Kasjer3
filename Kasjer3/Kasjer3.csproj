@@ -6,11 +6,17 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <DebugType>embedded</DebugType>
+    <ApplicationIcon>kasjer_2_X1v_icon.ico</ApplicationIcon>
+    <StartupObject>Kasjer3.App</StartupObject>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>False</Optimize>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="kasjer_2_X1v_icon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
