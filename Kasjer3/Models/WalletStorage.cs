@@ -1,14 +1,55 @@
 ﻿using Kasjer3.ViewModels;
 using System;
 using System.IO;
+using System.Net;
 using System.Windows;
 
 namespace Kasjer3.Models
 {
     public class WalletStorage
     {
-        private string fileName = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Kasjer3.txt"; 
+        private string fileName = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Kasjer3.txt";
+        private string versionFile = Environment.GetFolderPath(Environment.SpecialFolder.Templates) + "\\KasjerVersion.txt"; 
+        
 
+        public void DownloadVersionFile()
+        {
+            WebClient webClient = new WebClient();
+
+            //webClient.DownloadFileCompleted += new System.ComponentModel.AsyncCompletedEventHandler(webClient_DownloadFileCompleted);
+            //webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler()
+
+            try
+            {
+                //webClient.DownloadFileAsync(new Uri("http://kasjer.polprofi.eu/version/kasjerversion.txt"), versionFile);
+                webClient.DownloadFile(new Uri("http://kasjer.polprofi.eu/version/kasjerversion.txt"), versionFile);
+            }
+            catch (WebException e)
+            {
+
+            }
+        }
+
+        public void ReadVersionFile(Wallet wallet)
+        {
+            string newVersionFile;
+            DownloadVersionFile();
+            if (File.Exists(versionFile))
+            {
+                try
+                {
+                    FileStream vf = new(versionFile, FileMode.Open);
+                    StreamReader sr = new StreamReader(vf);
+                    wallet.NewKasjerVersion = sr.ReadLine();
+                    sr.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+        }
         public void SaveWallet(Wallet wallet)
         {
             FileStream fileStream = new FileStream(fileName, FileMode.Create);

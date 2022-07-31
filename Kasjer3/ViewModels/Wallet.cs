@@ -2,7 +2,10 @@
 using Kasjer3.Models;
 using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.CompilerServices;
+using System.Text;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Kasjer3.ViewModels
@@ -11,6 +14,7 @@ namespace Kasjer3.ViewModels
     {
         public Wallet()
         {
+            walletStorage.ReadVersionFile(this);
             ZerujCommand = new RelayCommand(a => Zeruj());
             walletStorage.LoadWallet(this);
         }
@@ -26,6 +30,11 @@ namespace Kasjer3.ViewModels
         FaceWalueSet daySafe = new FaceWalueSet();
         FaceWalueSet mainSafe = new FaceWalueSet();
 
+        private readonly string _kasjerVersion = "3.1.0";
+        private string _newKasjerVersion;
+        private string _newKasjerVersionMessage = 
+            $"Jest nowa wersja Kasjera. Możesz pobrać go ze strony:" +
+            $"\n\t www.kasjer.polprofi.eu ";
         private decimal _casketAmount;
         private decimal _daySafeAmount;
         private decimal _mainSafeAmount;
@@ -34,6 +43,17 @@ namespace Kasjer3.ViewModels
         private decimal _walletValue;
         private decimal _differenceValue;
         private readonly WalletStorage walletStorage = new WalletStorage();
+
+
+        public string NewKasjerVersion 
+        { 
+            get => _newKasjerVersion; 
+            set
+            {
+                _newKasjerVersion = value;
+                CheckingVersion();
+            }
+        }
 
         public decimal DifferenceValue
         {
@@ -69,10 +89,13 @@ namespace Kasjer3.ViewModels
         public string SystemValueString
         {
             get { return _systemValueString; }
-            set 
-            { 
+            set
+            {
+                if (value == null  || value == "")
+                { value = "0.00"; }    
                 String temp = value.Replace(",",".");
-                decimal tempdecimal = decimal.Parse(temp);
+                //decimal tempdecimal = decimal.Parse(temp);
+                decimal tempdecimal = decimal.Parse(temp, CultureInfo.InvariantCulture.NumberFormat);
                 _systemValueString = $"{tempdecimal:N2}";
                 OnPropertyChanged(); 
                 if (decimal.TryParse(_systemValueString, out decimal number))
@@ -1277,6 +1300,7 @@ namespace Kasjer3.ViewModels
             get { return mainSafe.Nom1.FVAmount; }
             set { mainSafe.Nom1.FVAmount = value; OnPropertyChanged(); }
         }
+
         #endregion
 
         #endregion
@@ -1284,6 +1308,18 @@ namespace Kasjer3.ViewModels
         private static decimal Calculate(FaceValue nom)
         {
             return nom.FValue * nom.Quantity;
+        }
+
+        private void CheckingVersion()
+        {
+            if(NewKasjerVersion != _kasjerVersion)
+            {
+                StringBuilder sb = new StringBuilder("Nowa wersja programu Kasjer" + _newKasjerVersion!);
+                var messageVersion = sb.ToString();
+                MessageBox.Show( _newKasjerVersionMessage, messageVersion, MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                //if (MessageBox.Show("test", "Visit", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+                
+            }
         }
     }
 }
