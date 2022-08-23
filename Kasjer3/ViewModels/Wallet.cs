@@ -29,8 +29,9 @@ namespace Kasjer3.ViewModels
         FaceWalueSet casket = new FaceWalueSet();
         FaceWalueSet daySafe = new FaceWalueSet();
         FaceWalueSet mainSafe = new FaceWalueSet();
+        FaceWalueSet fullWallet = new FaceWalueSet();
 
-        private readonly string _kasjerVersion = "3.1.0";
+        private readonly string _kasjerVersion = "3.2.0";
         private string _newKasjerVersion;
         private string _newKasjerVersionMessage = 
             $"Jest nowa wersja Kasjera. Możesz pobrać go ze strony:" +
@@ -43,6 +44,22 @@ namespace Kasjer3.ViewModels
         private decimal _walletValue;
         private decimal _differenceValue;
         private readonly WalletStorage walletStorage = new WalletStorage();
+
+        private string _amount50000 = "0";
+        private string _amount20000 = "0";
+        private string _amount10000 = "0";
+        private string _amount5000 = "0";
+        private string _amount2000 = "0";
+        private string _amount1000 = "0";
+        private string _amount500 = "0";
+        private string _amount200 = "0";
+        private string _amount100 = "0";
+        private string _amount50 = "0";
+        private string _amount20 = "0";
+        private string _amount10 = "0";
+        private string _amount5 = "0";
+        private string _amount2 = "0";
+        private string _amount1 = "0";
 
 
         public string NewKasjerVersion 
@@ -122,6 +139,7 @@ namespace Kasjer3.ViewModels
 
         public void SetWalletValue()
         {
+            SetQuantityNominal();
             SetCasketAmount();
             SetDaySafeAmount();
             SetMainSafeAmount();
@@ -560,7 +578,7 @@ namespace Kasjer3.ViewModels
 
         #endregion
 
-        #region SEJF DZIENNY
+        #region WRZUTNIA
 
         public decimal DaySafeAmount
         {
@@ -933,7 +951,7 @@ namespace Kasjer3.ViewModels
 
         #endregion
 
-        #region SEJF GŁÓWNY
+        #region SEJF
 
         public decimal MainSafeAmount
         {
@@ -1302,6 +1320,217 @@ namespace Kasjer3.ViewModels
         }
 
         #endregion
+
+        #endregion
+
+        #region WALLET
+
+        public int Quantity50000
+        {
+            get { return fullWallet.Nom50000.Quantity; }
+            set { fullWallet.Nom50000.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount50000Str
+        {
+            get { return _amount50000; }
+            set { _amount50000 = value; OnPropertyChanged(); }
+        }
+
+        public int Quantity20000
+        {
+            get { return fullWallet.Nom20000.Quantity; }
+            set { fullWallet.Nom20000.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount20000Str
+        {
+            get { return _amount20000; }
+            set { _amount20000 = value; OnPropertyChanged(); }
+        }
+                
+        public int Quantity10000
+        {
+            get { return fullWallet.Nom10000.Quantity; }
+            set { fullWallet.Nom10000.Quantity = value; OnPropertyChanged(); }
+        }public string Amount10000Str
+        {
+            get { return _amount10000; }
+            set { _amount10000 = value; OnPropertyChanged(); }
+        }
+
+
+
+        public int Quantity5000
+        {
+            get { return fullWallet.Nom5000.Quantity; }
+            set { fullWallet.Nom5000.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount5000Str
+        {
+            get { return _amount5000; }
+            set { _amount5000 = value; OnPropertyChanged(); }
+        }
+
+        public int Quantity2000
+        {
+            get { return fullWallet.Nom2000.Quantity; }
+            set { fullWallet.Nom2000.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount2000Str
+        {
+            get { return _amount2000; }
+            set { _amount2000 = value; OnPropertyChanged(); }
+        }
+
+        public int Quantity1000
+        {
+            get { return fullWallet.Nom1000.Quantity; }
+            set { fullWallet.Nom1000.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount1000Str
+        {
+            get { return _amount1000; }
+            set { _amount1000 = value; OnPropertyChanged(); }
+        }
+
+
+        public int Quantity500
+        {
+            get { return fullWallet.Nom500.Quantity; }
+            set { fullWallet.Nom500.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount500Str
+        {
+            get { return _amount500; }
+            set { _amount500 = value; OnPropertyChanged(); }
+        }
+
+        public int Quantity200
+        {
+            get { return fullWallet.Nom200.Quantity; }
+            set { fullWallet.Nom200.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount200Str
+        {
+            get { return _amount200; }
+            set { _amount200 = value; OnPropertyChanged(); }
+        }
+
+        public int Quantity100
+        {
+            get { return fullWallet.Nom100.Quantity; }
+            set { fullWallet.Nom100.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount100Str
+        {
+            get { return _amount100; }
+            set { _amount100 = value; OnPropertyChanged(); }
+        }
+
+
+        public int Quantity50
+        {
+            get { return fullWallet.Nom50.Quantity; }
+            set { fullWallet.Nom50.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount50Str
+        {
+            get { return _amount50; }
+            set { _amount50 = value; OnPropertyChanged(); }
+        }
+
+        public int Quantity20
+        {
+            get { return fullWallet.Nom20.Quantity; }
+            set { fullWallet.Nom20.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount20Str
+        {
+            get { return _amount20; }
+            set { _amount20 = value; OnPropertyChanged(); }
+        }
+
+        public int Quantity10
+        {
+            get { return fullWallet.Nom10.Quantity; }
+            set { fullWallet.Nom10.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount10Str
+        {
+            get { return _amount10; }
+            set { _amount10 = value; OnPropertyChanged(); }
+        }
+
+
+        public int Quantity5
+        {
+            get { return fullWallet.Nom5.Quantity; }
+            set { fullWallet.Nom5.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount5Str
+        {
+            get { return _amount5; }
+            set { _amount5 = value; OnPropertyChanged(); }
+        }
+
+        public int Quantity2
+        {
+            get { return fullWallet.Nom2.Quantity; }
+            set { fullWallet.Nom2.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount2Str
+        {
+            get { return _amount2; }
+            set { _amount2 = value; OnPropertyChanged(); }
+        }
+
+        public int Quantity1
+        {
+            get { return fullWallet.Nom1.Quantity; }
+            set { fullWallet.Nom1.Quantity = value; OnPropertyChanged(); }
+        }
+        public string Amount1Str
+        {
+            get { return _amount1; }
+            set { _amount1 = value; OnPropertyChanged(); }
+        }
+
+
+        private void SetQuantityNominal()
+        {
+            Quantity50000 = Casket50000Quantity + DaySafe50000Quantity + MainSafe50000Quantity;
+            Amount50000Str = Calculate(fullWallet.Nom50000).ToString("N2");
+            Quantity20000 = Casket20000Quantity + DaySafe20000Quantity + MainSafe20000Quantity;
+            Amount20000Str = Calculate(fullWallet.Nom20000).ToString("N2");
+            Quantity10000 = Casket10000Quantity + DaySafe10000Quantity + MainSafe10000Quantity;
+            Amount10000Str = Calculate(fullWallet.Nom10000).ToString("N2");
+            Quantity5000 = Casket5000Quantity + DaySafe5000Quantity + MainSafe5000Quantity;
+            Amount5000Str = Calculate(fullWallet.Nom5000).ToString("N2");
+            Quantity2000 = Casket2000Quantity + DaySafe2000Quantity + MainSafe2000Quantity;
+            Amount2000Str = Calculate(fullWallet.Nom2000).ToString("N2");
+            Quantity1000 = Casket1000Quantity + DaySafe1000Quantity + MainSafe1000Quantity;
+            Amount1000Str = Calculate(fullWallet.Nom1000).ToString("N2");
+            Quantity500 = Casket500Quantity + DaySafe500Quantity + MainSafe500Quantity;
+            Amount500Str = Calculate(fullWallet.Nom500).ToString("N2");
+            Quantity200 = Casket200Quantity + DaySafe200Quantity + MainSafe200Quantity;
+            Amount200Str = Calculate(fullWallet.Nom200).ToString("N2");
+            Quantity100 = Casket100Quantity + DaySafe100Quantity + MainSafe100Quantity;
+            Amount100Str = Calculate(fullWallet.Nom100).ToString("N2");
+            Quantity50 = Casket50Quantity + DaySafe50Quantity + MainSafe50Quantity;
+            Amount50Str = Calculate(fullWallet.Nom50).ToString("N2");
+            Quantity20 = Casket20Quantity + DaySafe20Quantity + MainSafe20Quantity;
+            Amount20Str = Calculate(fullWallet.Nom20).ToString("N2");
+            Quantity10 = Casket10Quantity + DaySafe10Quantity + MainSafe10Quantity;
+            Amount10Str = Calculate(fullWallet.Nom10).ToString("N2");
+            Quantity5 = Casket5Quantity + DaySafe5Quantity + MainSafe5Quantity;
+            Amount5Str = Calculate(fullWallet.Nom5).ToString("N2");
+            Quantity2 = Casket2Quantity + DaySafe2Quantity + MainSafe2Quantity;
+            Amount2Str = Calculate(fullWallet.Nom2).ToString("N2");
+            Quantity1 = Casket1Quantity + DaySafe1Quantity + MainSafe1Quantity;
+            Amount1Str = Calculate(fullWallet.Nom1).ToString("N2");
+
+
+        }
+
 
         #endregion
 

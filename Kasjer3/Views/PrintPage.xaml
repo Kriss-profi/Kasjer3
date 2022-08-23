@@ -28,7 +28,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="80" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -64,8 +65,9 @@
 
             <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" FontSize="20" HorizontalAlignment="Center" Text="Raport stanu Gotówki" />
             <TextBlock Grid.Row="3" Grid.Column="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="Kasetka" />
-            <TextBlock Grid.Row="3" Grid.Column="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="Sejf dzienny" TextWrapping="Wrap" />
-            <TextBlock Grid.Row="3" Grid.Column="4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="Sejf   główny" TextWrapping="WrapWithOverflow"/>
+            <TextBlock Grid.Row="3" Grid.Column="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="Wrzutnia" TextWrapping="Wrap" />
+            <TextBlock Grid.Row="3" Grid.Column="4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="Sejf" TextWrapping="WrapWithOverflow"/>
+            <TextBlock Grid.Row="3" Grid.Column="5" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="Razem" TextWrapping="WrapWithOverflow"/>
             <TextBlock Text="{Binding Path=Casket50000Name, Mode=OneTime}" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4" />
             <TextBlock Text="{Binding Path=Casket20000Name, Mode=OneTime}" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Grid.Row="5" />
             <TextBlock Text="{Binding Path=Casket10000Name, Mode=OneTime}" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Grid.Row="6" />
@@ -127,17 +129,32 @@
             <TextBlock x:Name="SafeM_5"         Grid.Column="4" Grid.Row="16"  Text="{Binding Path=MainSafe5Quantity,     Mode=OneWay, StringFormat={}{0} szt.}" />
             <TextBlock x:Name="SafeM_2"         Grid.Column="4" Grid.Row="17"  Text="{Binding Path=MainSafe2Quantity,     Mode=OneWay, StringFormat={}{0} szt.}" />
             <TextBlock x:Name="SafeM_1"         Grid.Column="4" Grid.Row="18"  Text="{Binding Path=MainSafe1Quantity,     Mode=OneWay, StringFormat={}{0} szt.}" />
-            <TextBlock x:Name="Linia"           Grid.Column="1" Grid.Row="19"  Grid.ColumnSpan="4" Background="Black" Margin="0"/>
+            <TextBlock x:Name="FullW_50000"     Grid.Column="5" Grid.Row="4"   Text="{Binding Path=Quantity50000,         Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_20000"     Grid.Column="5" Grid.Row="5"   Text="{Binding Path=Quantity20000,         Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_10000"     Grid.Column="5" Grid.Row="6"   Text="{Binding Path=Quantity10000,         Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_5000"      Grid.Column="5" Grid.Row="7"   Text="{Binding Path=Quantity5000,          Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_2000"      Grid.Column="5" Grid.Row="8"   Text="{Binding Path=Quantity2000,          Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_1000"      Grid.Column="5" Grid.Row="9"   Text="{Binding Path=Quantity1000,          Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_500"       Grid.Column="5" Grid.Row="10"  Text="{Binding Path=Quantity500,           Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_200"       Grid.Column="5" Grid.Row="11"  Text="{Binding Path=Quantity200,           Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_100"       Grid.Column="5" Grid.Row="12"  Text="{Binding Path=Quantity100,           Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_50"        Grid.Column="5" Grid.Row="13"  Text="{Binding Path=Quantity50,            Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_20"        Grid.Column="5" Grid.Row="14"  Text="{Binding Path=Quantity20,            Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_10"        Grid.Column="5" Grid.Row="15"  Text="{Binding Path=Quantity10,            Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_5"         Grid.Column="5" Grid.Row="16"  Text="{Binding Path=Quantity5,             Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_2"         Grid.Column="5" Grid.Row="17"  Text="{Binding Path=Quantity2,             Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="FullW_1"         Grid.Column="5" Grid.Row="18"  Text="{Binding Path=Quantity1,             Mode=OneWay, StringFormat={}{0} szt.}" FontWeight="DemiBold" />
+            <TextBlock x:Name="Linia"           Grid.Column="1" Grid.Row="19"  Grid.ColumnSpan="5" Background="Black" Margin="0"/>
             <TextBlock x:Name="Kasetka"         Grid.Column="2" Grid.Row="20"  FontSize="14" Text="{Binding Path=CasketAmount, Mode=TwoWay, StringFormat={}{0:N2} zł.}"   ToolTip="Kasetka"  TextAlignment="Right"/>
             <TextBlock x:Name="Kasa"            Grid.Column="3" Grid.Row="20"  FontSize="14" Text="{Binding Path=DaySafeAmount, Mode=OneWay, StringFormat={}{0:N2} zł.}"  ToolTip="Sejf DZIENNY" TextAlignment="Right"/>
             <TextBlock x:Name="Sejf"            Grid.Column="4" Grid.Row="20"  FontSize="14" Text="{Binding Path=MainSafeAmount, Mode=OneWay, StringFormat={}{0:N2} zł.}" ToolTip="Sejf GŁÓWNY" TextAlignment="Right"/>
-            <TextBlock x:Name="Linia2"          Grid.Column="1" Grid.Row="21"  Grid.ColumnSpan="4" Background="Black" Margin="0"/>
-            <TextBlock x:Name="SumaText"        Grid.Column="1" Grid.Row="22"  Grid.ColumnSpan="2" Text="Gotówka w Kasie:"   TextAlignment="Right" Margin="0 0 5 0" />
-            <TextBlock x:Name="SystemText"      Grid.Column="1" Grid.Row="23"  Grid.ColumnSpan="2" Text="Kwota Sprawdzenia:" TextAlignment="Right" Margin="0 0 5 0" />
-            <TextBlock x:Name="DiferenceText"   Grid.Column="1" Grid.Row="24"  Grid.ColumnSpan="2" Text="Różnica:"           TextAlignment="Right" Margin="0 0 5 0" />
-            <TextBlock x:Name="Suma"            Grid.Column="3" Grid.Row="22"  Grid.ColumnSpan="2" Text="{Binding Path=WalletValue, Mode=OneWay, StringFormat={}{0:N2} zł.}" TextAlignment="Right" FontWeight="DemiBold" />
-            <TextBlock x:Name="ValueSystem"     Grid.Column="3" Grid.Row="23"  Grid.ColumnSpan="2" Text="{Binding SystemValue, Mode=TwoWay, StringFormat={}{0:N2} zł.}"  TextAlignment="Right" FontWeight="DemiBold" />
-            <TextBlock x:Name="Diference"       Grid.Column="3" Grid.Row="24"  Grid.ColumnSpan="2" Text="{Binding Path=DifferenceValue, Mode=OneWay, StringFormat={}{0:N2} zł.}" Foreground="{Binding Path=DifferenceValue,  Converter={StaticResource dcc}}" TextAlignment="Right" VerticalAlignment="Center" FontSize="16" />
+            <TextBlock x:Name="Linia2"          Grid.Column="1" Grid.Row="21"  Grid.ColumnSpan="5" Background="Black" Margin="0"/>
+            <TextBlock x:Name="SumaText"        Grid.Column="1" Grid.Row="22"  Grid.ColumnSpan="3" Text="Gotówka w Kasie:"   TextAlignment="Right" Margin="0 0 5 0" />
+            <TextBlock x:Name="SystemText"      Grid.Column="1" Grid.Row="23"  Grid.ColumnSpan="3" Text="Kwota Sprawdzenia:" TextAlignment="Right" Margin="0 0 5 0" />
+            <TextBlock x:Name="DiferenceText"   Grid.Column="1" Grid.Row="24"  Grid.ColumnSpan="3" Text="Różnica:"           TextAlignment="Right" Margin="0 0 5 0" />
+            <TextBlock x:Name="Suma"            Grid.Column="4" Grid.Row="22"  Grid.ColumnSpan="2" Text="{Binding Path=WalletValue, Mode=OneWay, StringFormat={}{0:N2} zł.}" TextAlignment="Right" FontWeight="DemiBold" />
+            <TextBlock x:Name="ValueSystem"     Grid.Column="4" Grid.Row="23"  Grid.ColumnSpan="2" Text="{Binding SystemValue, Mode=TwoWay, StringFormat={}{0:N2} zł.}"  TextAlignment="Right" FontWeight="DemiBold" />
+            <TextBlock x:Name="Diference"       Grid.Column="4" Grid.Row="24"  Grid.ColumnSpan="2" Text="{Binding Path=DifferenceValue, Mode=OneWay, StringFormat={}{0:N2} zł.}" Foreground="{Binding Path=DifferenceValue,  Converter={StaticResource dcc}}" TextAlignment="Right" VerticalAlignment="Center" FontSize="16" />
         </Grid>
     </Grid>
 </Window>

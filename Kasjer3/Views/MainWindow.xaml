@@ -10,7 +10,7 @@
         ResizeMode="NoResize"
         Title="Kasjer 3.0" 
         Height="600" 
-        Width="390">
+        Width="400">
     <Window.Resources>
         <local:DiferencColorConverter x:Key="dcc" />
         <Style TargetType="TextBox" >
@@ -62,10 +62,11 @@
         <Grid ShowGridLines="False" x:Name="KasjerView" PreviewKeyDown="Grid_PreviewKeyDown">
 
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -88,8 +89,8 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" x:Name="Kaska"   FontSize="14" Text="Nominał" TextAlignment="Center"/>
             <TextBlock Grid.Row="0" Grid.Column="1" x:Name="Kasetka" FontSize="14" Text="{Binding Path=CasketAmount, Mode=TwoWay, StringFormat={}{0:N2} zł.}"   ToolTip="Kasetka"  TextAlignment="Right"/>
-            <TextBlock Grid.Row="0" Grid.Column="2" x:Name="Kasa"    FontSize="14" Text="{Binding Path=DaySafeAmount, Mode=OneWay, StringFormat={}{0:N2} zł.}"  ToolTip="Sejf DZIENNY" TextAlignment="Right"/>
-            <TextBlock Grid.Row="0" Grid.Column="3" x:Name="Sejf"    FontSize="14" Text="{Binding Path=MainSafeAmount, Mode=OneWay, StringFormat={}{0:N2} zł.}" ToolTip="Sejf GŁÓWNY" TextAlignment="Right"/>
+            <TextBlock Grid.Row="0" Grid.Column="2" x:Name="Wrzutnia"    FontSize="14" Text="{Binding Path=DaySafeAmount, Mode=OneWay, StringFormat={}{0:N2} zł.}"  ToolTip="Wrzutnia" TextAlignment="Right"/>
+            <TextBlock Grid.Row="0" Grid.Column="3" x:Name="Sejf"    FontSize="14" Text="{Binding Path=MainSafeAmount, Mode=OneWay, StringFormat={}{0:N2} zł.}" ToolTip="Sejf" TextAlignment="Right"/>
 
             <Label Content="{Binding Path=Casket50000Name, Mode=OneTime}" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" />
             <Label Content="{Binding Path=Casket20000Name, Mode=OneTime}" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2" />
@@ -106,6 +107,7 @@
             <Label Content="{Binding Path=Casket5Name, Mode=OneTime}"     HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="13" />
             <Label Content="{Binding Path=Casket2Name, Mode=OneTime}"     HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="14" />
             <Label Content="{Binding Path=Casket1Name, Mode=OneTime}"     HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="0" Grid.Row="15" />
+
 
             <TextBox x:Name="Casket_50000"    Grid.Column="1" Grid.Row="1"  AcceptsTab="False" Text="{Binding Path=Casket50000Quantity,   Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=Casket50000Amount,   Mode=OneWay, StringFormat={}{#:N2}}" TabIndex="2"/>
             <TextBox x:Name="Casket_20000"    Grid.Column="1" Grid.Row="2"  AcceptsTab="False" Text="{Binding Path=Casket20000Quantity,   Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=Casket20000Amount,   Mode=OneWay, StringFormat={}{0:N2}}" TabIndex="3"/>
@@ -153,6 +155,21 @@
             <TextBox x:Name="SafeM_2"         Grid.Column="3" Grid.Row="14" AcceptsTab="False" Text="{Binding Path=MainSafe2Quantity,     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=MainSafe2Amount,     Mode=OneWay, StringFormat={}{0:N2}}" TabIndex="44"/>
             <TextBox x:Name="SafeM_1"         Grid.Column="3" Grid.Row="15" AcceptsTab="False" Text="{Binding Path=MainSafe1Quantity,     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Path=MainSafe1Amount,     Mode=OneWay, StringFormat={}{0:N2}}" TabIndex="45"/>
 
+            <TextBlock x:Name="Quantity50000" Grid.Column="4" Grid.Row="1"  Text="{Binding Path=Quantity50000, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount50000Str, Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity20000" Grid.Column="4" Grid.Row="2"  Text="{Binding Path=Quantity20000, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount20000Str, Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity10000" Grid.Column="4" Grid.Row="3"  Text="{Binding Path=Quantity10000, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount10000Str, Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity5000"  Grid.Column="4" Grid.Row="4"  Text="{Binding Path=Quantity5000,  Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount5000Str,  Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity2000"  Grid.Column="4" Grid.Row="5"  Text="{Binding Path=Quantity2000,  Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount2000Str,  Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity1000"  Grid.Column="4" Grid.Row="6"  Text="{Binding Path=Quantity1000,  Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount1000Str,  Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity500"   Grid.Column="4" Grid.Row="7"  Text="{Binding Path=Quantity500,   Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount500Str,   Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity200"   Grid.Column="4" Grid.Row="8"  Text="{Binding Path=Quantity200,   Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount200Str,   Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity100"   Grid.Column="4" Grid.Row="9"  Text="{Binding Path=Quantity100,   Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount100Str,   Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity50"    Grid.Column="4" Grid.Row="10" Text="{Binding Path=Quantity50,    Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount50Str,    Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity20"    Grid.Column="4" Grid.Row="11" Text="{Binding Path=Quantity20,    Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount20Str,    Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity10"    Grid.Column="4" Grid.Row="12" Text="{Binding Path=Quantity10,    Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount10Str,    Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity5"     Grid.Column="4" Grid.Row="13" Text="{Binding Path=Quantity5,     Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount5Str,     Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity2"     Grid.Column="4" Grid.Row="14" Text="{Binding Path=Quantity2,     Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount2Str,     Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
+            <TextBlock x:Name="Quantity1"     Grid.Column="4" Grid.Row="15" Text="{Binding Path=Quantity1,     Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"  ToolTip="{Binding Path=Amount1Str,     Mode=OneWay}"   HorizontalAlignment="Right" TextAlignment="Center" FontSize="16"/>
         </Grid>
     </StackPanel>
 </Window>

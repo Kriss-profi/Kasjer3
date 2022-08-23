@@ -53,7 +53,7 @@ namespace Kasjer3
                 "\nJeśli podoba Ci się Kasjer i chcesz dowiedzieć się więcej. \n " +
                 "Zobacz na stronę:\t www.kasjer.polprofi.eu " +
                 "\n\tPozdrawiam KRZYSZTOF JAKUBOWSKI";
-            string caption = "Kasjer 3.1.0";
+            string caption = "Kasjer 3.2.0";
             MessageBoxButton buttons = MessageBoxButton.OKCancel;
             //MessageBoxImage icon = MessageBoxImage.Information;
             MessageBoxImage icon = MessageBoxImage.Information;
